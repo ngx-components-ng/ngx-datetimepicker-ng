@@ -1,0 +1,21 @@
+table.table.table-condensed
+  thead
+    tr
+      th.left
+        a((click)="previousYear()")
+          i.zmdi.zmdi-forward.zmdi-hc-flip-horizontal
+
+      th.switch(colspan="5")
+        a((click)="onHeaderClick.emit()")
+          span([textContent]="_selectedDate | dateFormat: 'YYYY'")
+
+      th.right
+        a((click)="nextYear()")
+          i.zmdi.zmdi-forward
+
+  tbody
+    tr
+      td(colspan="7")
+        span(*ngFor="let item of monthsGrid; let i = index", [ngSwitch]="item.isDisabled")
+          span.month(*ngSwitchCase="true", [textContent]="item.label")
+          a.month(*ngSwitchDefault="", (click)="onPick.emit(item.timestamp)", [textContent]="item.label")

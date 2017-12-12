@@ -1,0 +1,65 @@
+:host {
+  user-select: none;
+  display: block;
+  width: 300px;
+
+  ::ng-deep {
+    a {
+      cursor: pointer;
+    }
+
+    .table {
+      text-align: center;
+      margin: 0;
+
+      th {
+        padding: 5px;
+      }
+
+      td {
+        > span {
+          color: #eee;
+        }
+      }
+
+      th, td {
+        border: 0 !important;
+        height: 20px;
+        text-align: center;
+      }
+
+      .left {
+        width: 15%;
+        text-align: left;
+
+        a {
+          padding-left: 15px;
+        }
+      }
+
+      .right {
+        width: 15%;
+        text-align: right;
+
+        a {
+          padding-right: 15px;
+        }
+      }
+
+      tbody {
+        a {
+          color: black;
+
+          &.dimmed {
+            color: #ccc;
+          }
+
+          &:hover {
+            color: #000;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}

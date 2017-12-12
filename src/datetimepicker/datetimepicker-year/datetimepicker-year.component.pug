@@ -1,0 +1,20 @@
+table.table.table-condensed
+  thead
+    tr
+      th.left
+        a((click)="previousSet()")
+          i.zmdi.zmdi-forward.zmdi-hc-flip-horizontal
+
+      th.switch(colspan="5")
+        span([textContent]="yearsGrid[0].label + ' - ' + yearsGrid[11].label")
+
+      th.right
+        a((click)="nextSet()")
+          i.zmdi.zmdi-forward
+
+  tbody
+    tr
+      td(colspan="7", *ngIf="yearsGrid")
+        span(*ngFor="let item of yearsGrid; let i = index", [ngSwitch]="item.isDisabled")
+          span.year(*ngSwitchCase="true", [textContent]="item.label")
+          a.year(*ngSwitchDefault="", (click)="onPick.emit(item.timestamp)", [textContent]="item.label")
