@@ -1,6 +1,6 @@
 {
   "name": "ngx-datetimepicker-ng",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "author": "rtbm <marcin@bogusz.cc>",
   "repository": {
     "type": "git",
@@ -16,7 +16,7 @@
     "copy": "copyfiles -u 1 src/**/*.scss src/**/**/*.scss dist && copyfiles -u 1 src/**/*.html src/**/**/*.html dist && copyfiles README.md package.json dist",
     "build": "rollup -c rollup.config.umd.js && tsc && ngc",
     "bundle": "npm run clean && npm run build && npm run copy",
-    "publish": "cd dist && npm publish"
+    "publish": "cd ./dist && npm publish"
   },
   "dependencies": {
     "@angular/common": "^5.1.0",
@@ -36,13 +36,5 @@
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-typescript": "^0.8.1",
     "typescript": "^2.4.2"
-  },
-  "peerDependencies": {
-    "@angular/common": "^5.1.0",
-    "@angular/core": "^5.1.0",
-    "@angular/forms": "^5.1.0",
-    "moment": "^2.19.4",
-    "material-design-iconic-font": "^2.2.0",
-    "bootstrap": "^4.0.0-beta"
   }
 }
