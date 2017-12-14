@@ -70,8 +70,9 @@ import { DatetimepickerModule } from 'ngx-datetimepicker-ng';
 ## i18n
 Moment locale sensitive, set with [`moment.locale`](https://momentjs.com/docs/#/i18n/changing-locale/)
 
-## Component output
+## Component outputs
 - `[(ngModel)]`
+- `(onPick)` - EventEmitter
 
 ## Component inputs
 - `[dropdownRef]` - dropdown reference, calendar is calling .close() on pick value (template reference)
@@ -87,7 +88,7 @@ GitHub Issue Report: [click](https://github.com/ngx-components-ng/ngx-datetimepi
 - https://github.com/ngx-components-ng/ngx-datetimepicker-ng
 
 ## Dependencies
-- `rollback`
+- `rollup`
 - `@angular/compiler`
 - `@angular/compiler-cli`
 - `copyfiles`

@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input } from '@angular/core';
+import { Component, forwardRef, Input, Output, EventEmitter, HostListener } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import moment from 'moment';
 
@@ -18,6 +18,8 @@ export class DatetimepickerComponent implements ControlValueAccessor {
   @Input() public minDate: any;
   @Input() public maxDate: any;
 
+  @Output() public onPick = new EventEmitter();
+
   public _value: any = moment();
   public selectedDate;
 
@@ -31,7 +33,7 @@ export class DatetimepickerComponent implements ControlValueAccessor {
 
     if (this.viewMode === 'day' && this.dateOnly) {
       this.value = timestamp;
-      return this.resetView();
+      return this.handlePick();
     }
 
     switch (this.viewMode) {
@@ -53,12 +55,17 @@ export class DatetimepickerComponent implements ControlValueAccessor {
       }
       case 'minutes': {
         this.value = timestamp;
-        return this.resetView();
+        this.handlePick();
       }
     }
   }
 
-  resetView = () => {
+  private handlePick = () => {
+    this.onPick.emit(this.value);
+    return this.resetView();
+  }
+
+  private resetView = () => {
     this.viewMode = 'day';
 
     if (this.dropdownRef) {
