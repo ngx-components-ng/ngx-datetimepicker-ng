@@ -14,12 +14,16 @@ export class DatetimepickerGridBase implements OnChanges {
   public _maxDate: any;
 
   ngOnChanges(values) {
-    if (values.minDate && values.minDate.currentValue) {
-      this._minDate = moment(values.minDate.currentValue);
+    if (values.minDate) {
+      this._minDate = values.minDate.currentValue
+        ? moment(values.minDate.currentValue)
+        : undefined;
     }
 
-    if (values.maxDate && values.maxDate.currentValue) {
-      this._maxDate = moment(values.maxDate.currentValue);
+    if (values.maxDate) {
+      this._maxDate = values.maxDate.currentValue
+        ? moment(values.maxDate.currentValue)
+        : undefined;
     }
 
     if (values.selectedDate && values.selectedDate.currentValue) {
@@ -30,8 +34,11 @@ export class DatetimepickerGridBase implements OnChanges {
   }
 
   public isDisabled(momentObj: any) {
-    if (this._minDate && momentObj.isSameOrBefore(this._minDate)
-      || this._maxDate && momentObj.isSameOrAfter(this._maxDate)) {
+    if (this._minDate && momentObj.isBefore(this._minDate)) {
+      return true;
+    }
+
+    else if (this._maxDate && momentObj.isAfter(this._maxDate)) {
       return true;
     }
 

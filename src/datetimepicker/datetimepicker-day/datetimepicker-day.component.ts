@@ -25,6 +25,18 @@ export class DatetimepickerDayComponent extends DatetimepickerGridBase {
     this.generateView();
   }
 
+  public isDisabled(momentObj: any) {
+    if (this._minDate && momentObj.isBefore(this._minDate.startOf('day'))) {
+      return true;
+    }
+
+    else if (this._maxDate && momentObj.isAfter(this._maxDate.endOf('day'))) {
+      return true;
+    }
+
+    return false;
+  }
+
   generateView() {
     const firstDay = moment(this._selectedDate).startOf('month').toISOString();
     const firstDayOfWeek = moment(firstDay).weekday();

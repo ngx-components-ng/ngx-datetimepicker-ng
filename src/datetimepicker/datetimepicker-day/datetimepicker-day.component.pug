@@ -16,9 +16,9 @@ table.table.table-condensed
     tr
       th.dow(*ngFor="let day of days", [textContent]="day")
 
-  tbody
+  tbody(*ngIf="daysGrid.length")
     tr(*ngFor="let row of [0, 1, 2, 3, 4, 5]")
-      td(*ngFor="let day of [0, 1, 2, 3, 4, 5, 6]", [ngSwitch]="daysGrid[day+(row*7)].isDisabled")
+      td(*ngFor="let day of [0, 1, 2, 3, 4, 5, 6]", [ngSwitch]="daysGrid[day + (row * 7)].isDisabled")
 
         span.day(*ngSwitchCase="true", [textContent]="daysGrid[day + (row * 7)].timestamp | dateFormat: 'D'")
 

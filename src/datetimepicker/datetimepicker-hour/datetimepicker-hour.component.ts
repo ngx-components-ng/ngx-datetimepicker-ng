@@ -28,4 +28,16 @@ export class DatetimepickerHourComponent extends DatetimepickerGridBase {
       };
     });
   }
+
+  public isDisabled(momentObj: any) {
+    if (this._minDate && momentObj.isBefore(this._minDate.startOf('hour'))) {
+      return true;
+    }
+
+    else if (this._maxDate && momentObj.isAfter(this._maxDate.endOf('hour'))) {
+      return true;
+    }
+
+    return false;
+  }
 }

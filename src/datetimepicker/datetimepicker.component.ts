@@ -75,6 +75,7 @@ export class DatetimepickerComponent implements ControlValueAccessor {
 
   writeValue(obj: any): void {
     this._value = obj;
+    this.selectedDate = moment(obj);
     this.propagateChange(this.value);
   }
 
