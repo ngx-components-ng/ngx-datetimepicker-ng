@@ -5,6 +5,8 @@ export class DatetimepickerGridBase implements OnChanges {
   @Input() public selectedDate;
   @Input() public minDate: any;
   @Input() public maxDate: any;
+  @Input() public viewMode: string;
+  @Input() public minutesGridValues: any[];
 
   @Output() public onPick = new EventEmitter();
   @Output() public onHeaderClick = new EventEmitter();
@@ -30,7 +32,15 @@ export class DatetimepickerGridBase implements OnChanges {
       this._selectedDate = moment(values.selectedDate.currentValue);
     }
 
-    this.generateView();
+    this.generateViewWithOpts();
+  }
+
+  public generateViewWithOpts() {
+    if (this.viewMode === 'minutes') {
+      return this.generateView(this.minutesGridValues);
+    }
+
+    return this.generateView();
   }
 
   public isDisabled(momentObj: any) {
@@ -47,14 +57,14 @@ export class DatetimepickerGridBase implements OnChanges {
 
   public nextDay() {
     this._selectedDate = moment(this._selectedDate).add(1, 'day');
-    this.generateView();
+    this.generateViewWithOpts();
   }
 
   public previousDay() {
     this._selectedDate = moment(this._selectedDate).subtract(1, 'day');
-    this.generateView();
+    this.generateViewWithOpts();
   }
 
-  generateView() {
+  generateView(option?: any) {
   }
 }

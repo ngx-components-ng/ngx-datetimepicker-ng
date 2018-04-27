@@ -79,6 +79,7 @@ Moment locale sensitive, set with [`moment.locale`](https://momentjs.com/docs/#/
 - `dateOnly` - allow user to pick only date (boolean)
 - `[minDate]` - min date range (string, number, moment)
 - `[maxDate]` - max date range (string, number, moment)
+- `[minutesGridValues]` - available minutes grid values (array of numbers, ex. `[0, 15, 30, 45]`)
 
 # Bugs
 GitHub Issue Report: [click](https://github.com/ngx-components-ng/ngx-datetimepicker-ng/issues/new)

@@ -14,11 +14,13 @@ export class DatetimepickerMinutesComponent extends DatetimepickerGridBase {
     super();
   }
 
-  public generateView() {
+  public generateView(minutesGrid?: number[]) {
     const timeFormat = moment.localeData().longDateFormat('LT');
 
-    this.minutesGrid = new Array(60).fill(0).map((n, i) => {
-      const targetDate = moment(this._selectedDate).minutes(i);
+    const values = minutesGrid ||  new Array(60).fill(0).map(Number.call, Number);
+
+    this.minutesGrid = values.map((n: number) => {
+      const targetDate = moment(this._selectedDate).minutes(n);
       const isDisabled = this.isDisabled(targetDate);
 
       return {

@@ -17,6 +17,7 @@ export class DatetimepickerComponent implements ControlValueAccessor {
   @Input() public dateOnly: string;
   @Input() public minDate: any;
   @Input() public maxDate: any;
+  @Input() public minutesGridValues: number[];
 
   @Output() public onPick = new EventEmitter();
 

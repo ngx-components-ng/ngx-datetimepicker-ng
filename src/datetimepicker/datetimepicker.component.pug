@@ -5,6 +5,7 @@ app-datetimepicker-month(*ngIf="viewMode === 'month'", [minDate]="minDate", [max
 app-datetimepicker-hour(*ngIf="viewMode === 'hour'", [minDate]="minDate", [maxDate]="maxDate",
   [selectedDate]="selectedDate", (onHeaderClick)="viewMode = 'day'", (onPick)="setDate($event)")
 app-datetimepicker-minutes(*ngIf="viewMode === 'minutes'", [minDate]="minDate", [maxDate]="maxDate",
-  [selectedDate]="selectedDate", (onHeaderClick)="viewMode = 'hour'", (onPick)="setDate($event)")
+  [selectedDate]="selectedDate", (onHeaderClick)="viewMode = 'hour'", (onPick)="setDate($event)",
+  [viewMode]="viewMode", [minutesGridValues]="minutesGridValues")
 app-datetimepicker-year(*ngIf="viewMode === 'year'", [minDate]="minDate", [maxDate]="maxDate",
   [selectedDate]="selectedDate", (onPick)="setDate($event)")
