@@ -13,8 +13,9 @@ This package is bundled for Angular 5 and webpack/ng-cli. i18n, AOT ready.
 ## Usage sample with `@ng-bootstrap/ng-bootstrap` and pug
 
 ```jade
-  div(ngbDropdown, autoClose='false', #dropdown='ngbDropdown')
-    input(ngbDropdownToggle, name='bar', [ngModel]="myDate | dateFormat: 'DD.MM.YYYY'", (ngModelChange)='myDate=$event')
+  div(ngbDropdown, [autoClose]='false', #dropdown='ngbDropdown')
+    input(ngbDropdownToggle, name='bar', [ngModel]="myDate | dateFormat: 'DD.MM.YYYY'", (ngModelChange)='myDate=$event',
+    ngbDropdownAnchor)
 
     div(ngbDropdownMenu)
       app-datetimepicker(name='foo', [(ngModel)]='myDate', [dropdownRef]='dropdown')
