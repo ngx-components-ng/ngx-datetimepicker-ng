@@ -15,16 +15,12 @@ export class DatetimepickerYearComponent extends DatetimepickerGridBase {
   }
 
   generateView() {
-    const selectedYear = this._selectedDate.year();
-
-    const startAt = selectedYear.toString();
-    const startAtLastDigitStrip = startAt.substring(0, startAt.length - 1);
-    const startAtYear = Number(`${startAtLastDigitStrip}0`);
+    const startAtYear = this._selectedDate.year();
 
     const grid = [];
 
     for (let i = 0; i < 12; i++) {
-      const targetYear = Number(startAtYear) + i + 1;
+      const targetYear = Number(startAtYear) + i;
       const targetDate = moment(this._selectedDate).year(targetYear);
 
       grid.push({
@@ -38,12 +34,12 @@ export class DatetimepickerYearComponent extends DatetimepickerGridBase {
   }
 
   previousSet = () => {
-    this._selectedDate = this._selectedDate.subtract(11, 'years');
+    this._selectedDate = this._selectedDate.subtract(12, 'years');
     this.generateView();
   }
 
   nextSet = () => {
-    this._selectedDate = this._selectedDate.add(11, 'years');
+    this._selectedDate = this._selectedDate.add(12, 'years');
     this.generateView();
   }
 }
